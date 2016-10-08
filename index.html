@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="mainApp" ng-controller="mainCtrl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>LCG Visualizer</title>
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/css/tether.min.css" rel="stylesheet" media="screen">
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" media="screen">
+
+  <script src="http://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" charset="utf-8"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.min.js"></script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <script src="app.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="row text-xs-center m-t-3">
+      <div class="col-lg-12">
+        <h1 class="display-4">Linear Congruential Generator</h1>
+        <h6>A basic pseudorandom number generator. </h6>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row m-t-1 text-xs-center">
+      <h2 class="m-b-2">The equation</h2>
+      <h3>`x`<sub>`(n+1)`</sub> `= (ax`<sub>`n`</sub>` + c) mod m`</h3>
+    </div>
+
+    <p style=""></p>
+
+
+    <div class="row m-t-1 text-xs-center">
+
+      <div class="col-lg-3">
+        <h4 class="m-t-2">`0 <= x(seed) < m`</h4>
+        <input type="number" class="form-control text-xs-center input-lg" name="" value="" ng-model="_s" ng-change="generateSequence()" min="0" max="{{ _m - 1 }}">
+      </div>
+      <div class="col-lg-3">
+        <h4 class="m-t-2">`0 < a < m`</h4>
+        <input type="number" class="form-control text-xs-center input-lg" name="" value="" ng-model="_a" ng-change="generateSequence()" min="1" max="{{ _m - 1 }}">
+      </div>
+      <div class="col-lg-3">
+        <h4 class="m-t-2">`0 <= c < m`</h4>
+        <input type="number" class="form-control text-xs-center input-lg" name="" value="" ng-model="_c" ng-change="generateSequence()" min="0" max="{{ _m -1 }}">
+      </div>
+      <div class="col-lg-3">
+        <h4 class="m-t-2">`0 < m`</h4>
+        <input type="number" class="form-control text-xs-center input-lg" name="" value="" ng-model="_m" ng-change="generateSequence()" min="1" max="256">
+      </div>
+
+      <div class="col-lg-12 text-xs-left m-t-3">
+          <code style="overflow-wrap: break-word;">{{ _sequence }}</code>
+      </div>
+
+      <div class="col-lg-12 m-t-3">
+        <canvas id="sequenceChart" width="350" height="150"></canvas>
+      </div>
+
+    </div>
+
+
+
+    <div class="row text-xs-center m-t-3">
+      <hr>
+      <p>Created by <a href="https://github.com/eontool/">@eontool</a> using AngularJS 1.5 <a href="https://en.wikipedia.org/wiki/Pseudorandom_number_generator">Lear more about LCG and PRNG on wikipedia</a>.</p>
+    </div>
+
+  </div>
+
+
+</div>
+
+</body>
+</html>
